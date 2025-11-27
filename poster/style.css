@@ -5,8 +5,8 @@ html {
 
 .contenitore {
 
-    width: 375px;
-    height: 667px;
+    width: 100vw;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,15 +91,14 @@ html {
 
 }
 
-@media (min-width: 576px) {
+@media (min-width: 992px) {
 
 html {
         font-size: 24px;
     }
 
 .contenitore {
-    width: 1440px;
-    height: 1024px;
+
     margin: 0 auto;
 }
 
