@@ -11,6 +11,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
 #about-me {
     background-color: hsla(0, 0%, 0%, 0.2);
 }
@@ -32,30 +33,31 @@ body {
 .gallery {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 /* X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap
 
-/* // Small devices (landscape phones, 576px and up) */ 
-@media (min-width: 576px) { }
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {}
 
-/* // Medium devices (tablets, 768px and up) */ 
-@media (min-width: 768px) { }
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
 
-/* //Large devices (desktops, 992px and up) */ 
-@media (min-width: 992px) { 
+/* //Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
     .gallery {
         flex-direction: row;
     }
+
     .gallery figure {
         width: 30%;
     }
 }
 
-/* // X-Large devices (large desktops, 1200px and up) */ 
-@media (min-width: 1200px) {  }
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
 
-/* // XX-Large devices (larger desktops, 1400px and up) */ 
-@media (min-width: 1400px) { }
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {}
