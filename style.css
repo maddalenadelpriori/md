@@ -1,63 +1,45 @@
+html{
+    font-size: 16px;
+}
+
 body {
-    font-size: 50px;
-    color: black;
-    background-color: yellow;
+    padding: 1rem;
+}
+ul{
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+
 }
 
-#page {
-    width: 80%;
-    margin-top: 80%;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#about-me {
-    background-color: hsla(0, 0%, 0%, 0.2);
-}
-
-#work {
-    background-color: hsla(0, 0%, 0%, 0.2);
-}
-
-#contatti {
-    background-color: hsla(0, 0%, 0%, 0.2);
-}
-
-.section {
-    padding: 16px;
-    padding: 16px 16px;
-    padding: 16px 16px 16px 16px;
-}
-
-.gallery {
+.menu {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
 }
 
-/* X-Small devices (portrait phones, less than 576px)
-No media query for `xs` since this is the default in Bootstrap
-
-/* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {}
-
-/* // Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {}
-
-/* //Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .gallery {
-        flex-direction: row;
-    }
-
-    .gallery figure {
-        width: 30%;
-    }
+li {
+    font-size: 1.5rem;
 }
 
-/* // X-Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {}
+a, a:link {
+    color: hsl(0, 100%, 50%);
+    text-decoration: none;
+}
 
-/* // XX-Large devices (larger desktops, 1400px and up) */
-@media (min-width: 1400px) {}
+a:visited {
+    color: hsl(314, 81%, 44%);
+}
+
+a:hover, a:focus {
+    color: hsl(261, 100%, 50%);
+}
+
+a:active {
+    color: hsl(94, 100%, 50%)
+}
+
+
+
+
+
+
+
