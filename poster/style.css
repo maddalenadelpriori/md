@@ -117,7 +117,7 @@ html {
     top: 8%;
     width: 100%;
     padding: 0 4rem;
-    font-size: 5.75rem; 
+    font-size: 5rem; 
     text-align: left;
     white-space: nowrap;
 }
@@ -132,12 +132,12 @@ html {
     box-sizing: border-box;
     margin-bottom: 0.2rem;
     color: #000000;
-    font-size: 0.78rem;
+    font-size: 0.5rem;
 
 }
 
 .sezione-info p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 
 }
 
