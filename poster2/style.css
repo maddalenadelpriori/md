@@ -87,7 +87,6 @@ body {
 
 }
 
-/* 1. Definiamo i Keyframes (il movimento) */
 @keyframes impattoMuro {
     0% { transform: rotate(-15deg); }
     20% { transform: rotate(45deg); }
@@ -98,15 +97,12 @@ body {
     100% { transform: rotate(-15deg); }
 }
 
-/* 2. Applichiamo l'animazione al tocco */
 .bicchiere:hover, 
 .bicchiere:active {
     
     animation: impattoMuro 0.8s linear infinite;
     cursor: pointer;
     transform-origin: bottom center;
-    
-    /* Questo aiuta il browser a mantenere l'elemento nel layer corretto */
     will-change: transform; 
 }
 
