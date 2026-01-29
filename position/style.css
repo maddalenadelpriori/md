@@ -1,0 +1,85 @@
+html{
+    font-size: 16px;
+}
+#page{
+    width: 100vw;
+    height: 100dvh;
+    background-color: blanchedalmond;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.shape {
+    width: 100vw;
+    aspect-ratio: 1/1;
+    color:#fff;
+    background-color: hsla(0, 0%, 20%, 0.5);
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.square-1 {
+    width: 100px;
+    background-color: hsla(0, 100%, 50%, 0.5);
+
+}
+
+.square-2 {
+    width: 150px;
+    background-color: hsla(309, 100%, 50%, 0.5);
+
+}
+
+.square-3 {
+    width: 200px;
+    background-color: hsla(263, 100%, 50%, 0.5);
+}
+
+.circle-1 {
+    width: 50px;
+    background-color: hsla(240, 100%, 50%, 0.5);
+    border-radius: 50%;
+}
+
+.circle-2 {
+    width: 100px;
+    background-color: hsla(340, 100%, 50%, 0.5);
+    border-radius: 50%;
+}
+.circle-3 {
+    width: 250px;
+    background-color: hsla(76, 87%, 47%, 0.5);
+    border-radius: 50%;
+}
+
+.pos-r1{
+    position:relative;
+    top: 20px;
+    left: 20px;
+}
+
+.pos-r2 {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    z-index: 5;
+}
+
+.pos-a1 {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    z-index: 5;
+}
+
+.pos-f1 {
+    position:fixed;
+    bottom: 0;
+    right: 45%;
+    z-index: 5;
+}
