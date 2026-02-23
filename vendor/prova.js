@@ -1,4 +1,4 @@
-let gridWidth = 30;
+let gridWidth = 30; 
 let gridHeight = 30;
 let gameStarted = false;
 let isGameOver = false;
@@ -11,7 +11,7 @@ let score = 0;
 let highScore = 0;
 let fruits = []; 
 let particles = [];
-let walls = []; 
+let walls = []; //
 let colors = {};
 let cellSize; 
 let offsetX, offsetY; 
@@ -19,9 +19,10 @@ let offsetX, offsetY;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(10); 
+  // il serpente si muove a 10 frame al secondo (ho aumentato la velocità)
   textAlign(CENTER, CENTER);
-  calculateLayout();
-  pickNewPalette(); 
+  calculateLayout(); //dimensioni e posizionamento del quadrato di gioco (griglia)
+  pickNewPalette(); //colori neon 
 }
 
 function windowResized() {
@@ -30,14 +31,14 @@ function windowResized() {
 }
 
 function calculateLayout() {
-  // AUMENTATO: Portato da 0.45 a 0.65 per rendere il quadrato più grande
+  // Ho portato da 0.45 a 0.65 per rendere il quadrato più grande
   let gameSize = min(windowWidth, windowHeight) * 0.65; 
   cellSize = gameSize / gridWidth;
   
-  // Posiziona al centro orizzontalmente
+  // Ho centrato il qaudrato orizzontalmente
   offsetX = (windowWidth - (gridWidth * cellSize)) / 2;
   
-  // AGGIUSTATO: Cambiato da 0.38 a 0.42 per centrare meglio il quadrato più grande nel buco
+  // Ho centrato il quadrato verticalment
   offsetY = windowHeight * 0.42 - (gridHeight * cellSize) / 2; 
 }
 
@@ -50,7 +51,7 @@ function pickNewPalette() {
   colors = random(palettes);
 }
 
-function createMaze() {
+function createMaze() { // Creato muri e ostacoli
   walls = [];
   let numberOfObstacles = 7; 
   for (let n = 0; n < numberOfObstacles; n++) {
@@ -68,7 +69,7 @@ function createMaze() {
   }
 }
 
-function draw() {
+function draw() { //disegna tutto
   clear(); 
   
   push();
@@ -99,14 +100,14 @@ function draw() {
     }
   pop();
 
-  if (!gameStarted && !isGameOver && particles.length === 0) {
+  if (!gameStarted && !isGameOver && particles.length === 0) {//schermata iniziale
     showStartScreen();
   } else if (isGameOver) {
     displayGameOverText();
   }
 }
 
-function showWalls() {
+function showWalls() { //disegna muri
   fill(colors.wal); 
   noStroke();
   rectMode(CENTER);
@@ -115,7 +116,7 @@ function showWalls() {
   }
 }
 
-function showStartScreen() {
+function showStartScreen() {//schermata iniziale con titolo e istruzioni
   noStroke();
   fill(colors.snk);
   textSize(cellSize * 2.5); 
@@ -125,7 +126,7 @@ function showStartScreen() {
   text('CLICCA PER INIZIARE', width / 2, offsetY + (gridHeight * cellSize) / 2 + 30);
 }
 
-function displayGameOverText() {
+function displayGameOverText() {//schermata di game over con punteggio
   noStroke();
   fill(255);
   textSize(cellSize * 3);
@@ -137,7 +138,7 @@ function displayGameOverText() {
   text('CLICCA PER RICOMINCIARE', width / 2, offsetY + (gridHeight * cellSize) / 2 + 50);
 }
 
-function startGame() {
+function startGame() { //stato del gioco
   pickNewPalette(); 
   createMaze(); 
   isGameOver = false;
@@ -154,14 +155,14 @@ function startGame() {
   loop();
 }
 
-function updateSegments() {
+function updateSegments() { //aggiorna la posizione del serpente
   let head = segments[0].copy();
   if (direction === 'right') head.x++;
   if (direction === 'left') head.x--;
   if (direction === 'up') head.y--;
-  if (direction === 'down') head.y++;
-  segments.unshift(head);
-  segments.pop();
+  if (direction === 'down') head.y++; 
+  segments.unshift(head); //aggiunge la testa
+  segments.pop();//rimuove la coda (a meno che non mangia il frutto, in quel caso il serpente cresce)
 }
 
 function showSegments() {
@@ -169,7 +170,7 @@ function showSegments() {
   rectMode(CENTER);
   for (let i = 0; i < segments.length; i++) {
     let seg = segments[i];
-    let wobble = sin(frameCount * 0.5 + i * 0.8) * 0.05;
+    let wobble = sin(frameCount * 0.5 + i * 0.8) * 0.05; //effetto di oscillazione (il serpente vibra leggermente)
     let c = color(colors.snk);
     c.setAlpha(map(i, 0, segments.length, 255, 150));
     fill(c);
@@ -189,10 +190,10 @@ function showSegments() {
 function spawnFruit() {
   let valid = false;
   let newFruit;
-  while (!valid) {
+  while (!valid) { 
     newFruit = {
-      pos: createVector(floor(random(gridWidth)), floor(random(gridHeight))),
-      type: random() > 0.85 ? 'rare' : random(['apple', 'pear', 'orange'])
+      pos: createVector(floor(random(gridWidth)), floor(random(gridHeight))), 
+      type: random() > 0.85 ? 'rare' : random(['apple', 'pear', 'orange'])// 15% di possiblità di trovare un frutto raro che vale 5 punti invece di 1 (frutti normali)
     };
     valid = true;
     for (let w of walls) if (newFruit.pos.x === w.x && newFruit.pos.y === w.y) valid = false;
@@ -204,7 +205,7 @@ function spawnFruit() {
 
 function showFruits() {
   noStroke();
-  rectMode(CENTER);
+  rectMode(CENTER); 
   let pulse = 1.0 + sin(frameCount * 0.6) * 0.15;
   let pSize = 0.3 * pulse; 
 
@@ -212,7 +213,7 @@ function showFruits() {
     let x = f.pos.x;
     let y = f.pos.y;
 
-    if (f.type === 'apple') {
+    if (f.type === 'apple') { 
       fill(255, 60, 60); 
       rect(x, y, pSize*2.8, pSize*2.5, 0.2); 
       fill(100, 200, 50); 
@@ -240,37 +241,37 @@ function showFruits() {
   }
 }
 
-function checkForFruitCollision() {
+function checkForFruitCollision() { 
   let head = segments[0];
   for (let i = fruits.length - 1; i >= 0; i--) {
     if (head.x === fruits[i].pos.x && head.y === fruits[i].pos.y) {
       score += (fruits[i].type === 'rare' ? 5 : 1);
       for (let p = 0; p < 15; p++) particles.push(new Particle(fruits[i].pos.x, fruits[i].pos.y, colors.fru));
-      segments.push(segments[segments.length - 1].copy());
+      segments.push(segments[segments.length - 1].copy()); // fa crescere il serpente di 1 segmento ogni volta che mangia un frutto
       fruits.splice(i, 1);
       spawnFruit();
-      if (score % 4 === 0 && fruits.length < 3) spawnFruit();
+      if (score % 4 === 0 && fruits.length < 3) spawnFruit(); // ogni 4 punti, c'è la possibilità di far spawnare un frutto extra (anche 3 frutti contemporaneamente)
     }
   }
 }
 
 function checkForCollision() {
-  let head = segments[0];
+  let head = segments[0]; //game over se la testa del serpente tocca i bordi, un muro o ses tesso
   if (head.x >= gridWidth || head.x < 0 || head.y >= gridHeight || head.y < 0) return gameOver();
   for (let w of walls) if (head.x === w.x && head.y === w.y) return gameOver();
   for (let i = 1; i < segments.length; i++) if (segments[i].x === head.x && segments[i].y === head.y) return gameOver();
 }
 
-function gameOver() {
+function gameOver() { //il serpente quando muore esplode in particelle
   for (let seg of segments) for (let i = 0; i < 3; i++) particles.push(new Particle(seg.x, seg.y, colors.snk));
   if (score > highScore) highScore = score;
   gameStarted = false;
   isGameOver = true;
 }
 
-function mousePressed() { if (!gameStarted) startGame(); }
+function mousePressed() { if (!gameStarted) startGame(); }//cliccando sullo schermo si avvia il gioco (o riavvia se è game over)
 
-function handleParticles() {
+function handleParticles() { //gestisce l'animazione delle particelle del serpente qaundo muore
   for (let i = particles.length - 1; i >= 0; i--) {
     particles[i].update();
     particles[i].show();
@@ -278,11 +279,11 @@ function handleParticles() {
   }
 }
 
-class Particle {
+class Particle { 
   constructor(x, y, col) {
-    this.x = x; this.y = y;
+    this.x = x; this.y = y; 
     this.vx = random(-0.8, 0.8); this.vy = random(-0.8, 0.8);
-    this.alpha = 255; this.col = col;
+    this.alpha = 255; this.col = col; //le particelle svaniscono gradualmente (alpha diminuisce)
   }
   finished() { return this.alpha < 0; }
   update() { this.x += this.vx; this.y += this.vy; this.alpha -= 10; }
@@ -293,7 +294,7 @@ class Particle {
   }
 }
 
-function keyPressed() {
+function keyPressed() { //controlli con le frecce
   if (keyCode === LEFT_ARROW && direction !== 'right') direction = 'left';
   if (keyCode === RIGHT_ARROW && direction !== 'left') direction = 'right';
   if (keyCode === UP_ARROW && direction !== 'down') direction = 'up';
